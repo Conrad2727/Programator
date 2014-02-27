@@ -14,10 +14,14 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.DebugGraphics;
 
 public class mainView	{
 	private static JTextField textField;
 	private static JPasswordField passwordField;
+	private static JLabel lblNewLabel_2;
 
     public static void main(String[] args) {
         if (true) {
@@ -32,6 +36,35 @@ public class mainView	{
             public void run() {
 
                 JButton button1 = new JButton("Zaloguj si\u0119");
+                button1.setToolTipText("Wci\u015Bnij \u017Ceby zalogowa\u0107 si\u0119");
+                button1.addMouseListener(new MouseAdapter() {
+                	@Override
+                	public void mouseClicked(MouseEvent arg0) {
+                		String textdata = textField.getText();
+                		@SuppressWarnings("deprecation")
+						String passworddata = passwordField.getText();
+                		
+                			if (textdata.equals("admin"))	{
+                				
+                				if (passworddata.equals("admin"))	{
+                					lblNewLabel_2.setText("Login i Has³o s¹ prawid³owe.");
+                					lblNewLabel_2.setForeground(Color.GREEN);		
+                				}
+                				else	{
+                					lblNewLabel_2.setText("Login prawid³owy, has³o b³êdne.");
+                					lblNewLabel_2.setForeground(Color.BLUE);	
+                				}
+                			}
+                			else if (passworddata.equals("admin"))	{
+                				lblNewLabel_2.setText("Login b³êdny, has³o prawid³owe.");
+                				lblNewLabel_2.setForeground(Color.BLUE);	
+                			}
+                			else	{
+                				lblNewLabel_2.setText("Has³o i Login b³êdne");
+                				lblNewLabel_2.setForeground(Color.RED);	
+                			}
+                	}
+                });
                 button1.putClientProperty("JButton.buttonType", "segmented");
                 button1.putClientProperty("JButton.segmentPosition", "first");
 
@@ -50,12 +83,14 @@ public class mainView	{
                 frame.getContentPane().add(panel, BorderLayout.CENTER);
                 
                 textField = new JTextField();
+                textField.setToolTipText("Wpisz tutaj sw\u00F3j login");
                 sl_panel.putConstraint(SpringLayout.EAST, button1, 0, SpringLayout.EAST, textField);
                 sl_panel.putConstraint(SpringLayout.NORTH, textField, 68, SpringLayout.NORTH, panel);
                 panel.add(textField);
                 textField.setColumns(10);            
                 
                 passwordField = new JPasswordField();
+                passwordField.setToolTipText("Wpisz swoje has\u0142o");
                 sl_panel.putConstraint(SpringLayout.WEST, passwordField, 0, SpringLayout.WEST, textField);
                 sl_panel.putConstraint(SpringLayout.EAST, passwordField, 0, SpringLayout.EAST, button1);
                 panel.add(passwordField);
@@ -77,6 +112,11 @@ public class mainView	{
                 sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 10, SpringLayout.NORTH, panel);
                 sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_1, 10, SpringLayout.WEST, panel);
                 panel.add(lblNewLabel_1);
+                
+                lblNewLabel_2 = new JLabel("Prosz\u0119 wype\u0142nij Login i Has\u0142o.");
+                sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_2, 6, SpringLayout.NORTH, lblNewLabel_1);
+                sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_2, -24, SpringLayout.EAST, panel);
+                panel.add(lblNewLabel_2);
                 frame.setSize(531, 289);
                 frame.setLocationRelativeTo(null);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -84,5 +124,5 @@ public class mainView	{
             }
         });
     }
-
+    
 }
