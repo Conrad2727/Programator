@@ -2,7 +2,6 @@ package com.konrad.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,12 +15,13 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.DebugGraphics;
 
-public class mainView	{
+
+public class MainView	{
 	private static JTextField textField;
 	private static JPasswordField passwordField;
 	private static JLabel lblNewLabel_2;
+	static WindowView enterWindowView = new WindowView();
 
     public static void main(String[] args) {
         if (true) {
@@ -48,7 +48,8 @@ public class mainView	{
                 				
                 				if (passworddata.equals("admin"))	{
                 					lblNewLabel_2.setText("Login i Has³o s¹ prawid³owe.");
-                					lblNewLabel_2.setForeground(Color.GREEN);		
+                					lblNewLabel_2.setForeground(Color.GREEN);	
+                					enterWindowView.windowViewMethod();
                 				}
                 				else	{
                 					lblNewLabel_2.setText("Login prawid³owy, has³o b³êdne.");
@@ -123,6 +124,7 @@ public class mainView	{
                 frame.setVisible(true);
             }
         });
+   
     }
     
 }
