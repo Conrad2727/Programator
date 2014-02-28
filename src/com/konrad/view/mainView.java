@@ -88,7 +88,7 @@ public class MainView	{
                 sl_panel.putConstraint(SpringLayout.EAST, button1, 0, SpringLayout.EAST, textField);
                 sl_panel.putConstraint(SpringLayout.NORTH, textField, 68, SpringLayout.NORTH, panel);
                 panel.add(textField);
-                textField.setColumns(10);            
+                textField.setColumns(10);            				
                 
                 passwordField = new JPasswordField();
                 passwordField.setToolTipText("Wpisz swoje has\u0142o");

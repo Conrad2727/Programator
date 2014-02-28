@@ -2,7 +2,9 @@ package com.konrad.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -15,12 +17,15 @@ import javax.swing.UIManager;
 import javax.swing.SpringLayout;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JDesktopPane;
 import javax.swing.JToolBar;
 import javax.swing.JMenuBar;
 
 public class WindowView	{
-
+	
     /**
      * @wbp.parser.entryPoint
      */
@@ -39,25 +44,36 @@ public class WindowView	{
                 JPanel panel = new JPanel();
                 panel.setOpaque(true);
                 panel.setBackground(new Color(panel.getBackground().getRGB()));
-                panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+                panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));           
                 SpringLayout sl_panel = new SpringLayout();
                 panel.setLayout(sl_panel);
 
+                
+                
                 JFrame frame = new JFrame();
                 frame.setAutoRequestFocus(false);
+                
+                PaintPane pane;
+				try {
+					pane = new PaintPane(ImageIO.read(new File("source\\aaa.png")));
+				
+                pane.setLayout(new BorderLayout());
+                frame.add(pane);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                
+                
                 SpringLayout springLayout = new SpringLayout();
                 springLayout.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.NORTH, frame.getContentPane());
                 springLayout.putConstraint(SpringLayout.WEST, panel, 964, SpringLayout.WEST, frame.getContentPane());
                 springLayout.putConstraint(SpringLayout.SOUTH, panel, 562, SpringLayout.NORTH, frame.getContentPane());
                 frame.getContentPane().setLayout(springLayout);
                 frame.getContentPane().add(panel);
-                JLabel background=new JLabel(new ImageIcon("C:\\Users\\Konrad\\Desktop\\aaa.png"));
-                frame.getContentPane().add(background);
-                background.setOpaque(true);
 
-                
                 JMenuBar menuBar = new JMenuBar();
-                menuBar.setToolTipText("Menu");
+                menuBar.setToolTipText("Menu");       
                 springLayout.putConstraint(SpringLayout.NORTH, menuBar, 0, SpringLayout.NORTH, frame.getContentPane());
                 springLayout.putConstraint(SpringLayout.WEST, menuBar, 0, SpringLayout.WEST, frame.getContentPane());
                 springLayout.putConstraint(SpringLayout.SOUTH, menuBar, 21, SpringLayout.NORTH, frame.getContentPane());
@@ -65,7 +81,7 @@ public class WindowView	{
                 frame.getContentPane().add(menuBar);
                 
                 JMenu fileMenu = new JMenu("File");
-                menuBar.add(fileMenu);
+                fileMenu.setVisible(true);
                 JMenuItem newAction = new JMenuItem("New");
                 JMenuItem openAction = new JMenuItem("Open");
                 JMenuItem exitAction = new JMenuItem("Exit");
