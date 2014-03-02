@@ -23,6 +23,7 @@ import java.io.IOException;
 import javax.swing.JDesktopPane;
 import javax.swing.JToolBar;
 import javax.swing.JMenuBar;
+import javax.swing.JButton;
 
 public class WindowView	{
 	
@@ -41,24 +42,23 @@ public class WindowView	{
         SwingUtilities.invokeLater(new Runnable() {
             public void run() { 	
 
-                JPanel panel = new JPanel();
-                panel.setOpaque(true);
-                panel.setBackground(new Color(panel.getBackground().getRGB()));
-                panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));           
-                SpringLayout sl_panel = new SpringLayout();
-                panel.setLayout(sl_panel);
+           
+
+  
+
 
                 
                 
                 JFrame frame = new JFrame();
-                frame.setAutoRequestFocus(false);
-                
+                JPanel panel = new JPanel();
+                panel.setLayout(null);
+                frame.getContentPane().add(panel);
                 PaintPane pane;
 				try {
 					pane = new PaintPane(ImageIO.read(new File("source\\aaa.png")));
 				
                 pane.setLayout(new BorderLayout());
-                frame.add(pane);
+                frame.getContentPane().add(pane);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -71,31 +71,17 @@ public class WindowView	{
                 springLayout.putConstraint(SpringLayout.SOUTH, panel, 562, SpringLayout.NORTH, frame.getContentPane());
                 frame.getContentPane().setLayout(springLayout);
                 frame.getContentPane().add(panel);
-
-                JMenuBar menuBar = new JMenuBar();
-                menuBar.setToolTipText("Menu");       
-                springLayout.putConstraint(SpringLayout.NORTH, menuBar, 0, SpringLayout.NORTH, frame.getContentPane());
-                springLayout.putConstraint(SpringLayout.WEST, menuBar, 0, SpringLayout.WEST, frame.getContentPane());
-                springLayout.putConstraint(SpringLayout.SOUTH, menuBar, 21, SpringLayout.NORTH, frame.getContentPane());
-                springLayout.putConstraint(SpringLayout.EAST, menuBar, 97, SpringLayout.WEST, frame.getContentPane());
-                frame.getContentPane().add(menuBar);
                 
-                JMenu fileMenu = new JMenu("File");
-                fileMenu.setVisible(true);
-                JMenuItem newAction = new JMenuItem("New");
-                JMenuItem openAction = new JMenuItem("Open");
-                JMenuItem exitAction = new JMenuItem("Exit");
-                JMenuItem cutAction = new JMenuItem("Cut");
-                JMenuItem copyAction = new JMenuItem("Copy");
-                JMenuItem pasteAction = new JMenuItem("Paste");
+                JButton btnNewButton = new JButton("New button");
+                springLayout.putConstraint(SpringLayout.NORTH, btnNewButton, 168, SpringLayout.NORTH, frame.getContentPane());
+                springLayout.putConstraint(SpringLayout.WEST, btnNewButton, 247, SpringLayout.WEST, frame.getContentPane());
+                frame.getContentPane().add(btnNewButton);
                 
-                fileMenu.add(newAction);
-                fileMenu.add(openAction);
-                fileMenu.add(exitAction);
-                fileMenu.add(cutAction);
-                fileMenu.add(copyAction);
-                fileMenu.add(pasteAction);
-                
+                JLabel lblNewLabel = new JLabel("New label");
+                springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, 267, SpringLayout.NORTH, frame.getContentPane());
+                springLayout.putConstraint(SpringLayout.WEST, lblNewLabel, 93, SpringLayout.WEST, frame.getContentPane());
+                frame.getContentPane().add(lblNewLabel);
+                             
                 
                 frame.setSize(1000, 600);
                 frame.setLocationRelativeTo(null);
