@@ -1,27 +1,18 @@
 package com.konrad.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
+import java.awt.EventQueue;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.SpringLayout;
 import javax.swing.JButton;
 import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Point;
 import java.awt.Font;
-import javax.swing.JList;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollBar;
-import javax.swing.JProgressBar;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -30,13 +21,15 @@ public class WindowView extends JFrame {
 
 	private JPanel contentPane;
 	private static JLabel lblNewLabel_2;
+	private static JLabel lblNewLabel_3;
+	private static JRadioButton rdbtnTak;
+	private static JRadioButton rdbtnNie;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JComboBox list;
 	private JComboBox comboBox;
 
-	
 	String	listData[] =
 		{
 			"kiepsko",
@@ -104,7 +97,12 @@ public class WindowView extends JFrame {
 				textdata4 = textField_2.getText();	
 				combodata1 = (String) list.getSelectedItem();
 				combodata2 = (String) comboBox.getSelectedItem();
-				lblNewLabel_2.setText("Pracujesz w firmie " + textdata3 +", na stanowisku " + textdata2+". " + "Twój stosunek do pracy to: " + combodata1 + " i chcia³byœ zarabiaæ: " + combodata2 + ". W przysz³oœci chcesz pracowaæ w bran¿y: " + textdata4 +  ".");
+				lblNewLabel_2.setText("Pracujesz w firmie " + textdata3 +", na stanowisku " + textdata2+". " + "Twój stosunek do pracy to: " + combodata1 + " i chcia³byœ zarabiaæ: " + combodata2 + ".");
+				if (rdbtnTak.isSelected())
+					lblNewLabel_3.setText("W przysz³oœci chcesz pracowaæ w bran¿y: " + textdata4 +  " i chcesz zmieniæ pracê w przysz³oœci.");
+				else
+					lblNewLabel_3.setText("W przysz³oœci chcesz pracowaæ w bran¿y: " + textdata4 +  " i nie chcesz zmieniæ pracy w przysz³oœci.");
+					
 			}
 		});
 		sl_contentPane.putConstraint(SpringLayout.NORTH, btnNewButton, 499, SpringLayout.NORTH, contentPane);
@@ -175,12 +173,26 @@ public class WindowView extends JFrame {
 		textField_2.setColumns(10);
 		contentPane.add(textField_2);
 		
-		JRadioButton rdbtnTak = new JRadioButton("Tak");
+		rdbtnTak = new JRadioButton("Tak");
+		rdbtnTak.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				rdbtnNie.setSelected(false);
+			}
+		});
 		sl_contentPane.putConstraint(SpringLayout.WEST, rdbtnTak, 284, SpringLayout.EAST, textField_1);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, rdbtnTak, 0, SpringLayout.SOUTH, textField_1);
+		rdbtnTak.setSelected(true);
 		contentPane.add(rdbtnTak);
 		
-		JRadioButton rdbtnNie = new JRadioButton("Nie");
+		
+		rdbtnNie = new JRadioButton("Nie");
+		rdbtnNie.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rdbtnTak.setSelected(false);
+			}
+		});
 		sl_contentPane.putConstraint(SpringLayout.WEST, rdbtnNie, 45, SpringLayout.EAST, rdbtnTak);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, rdbtnNie, 0, SpringLayout.SOUTH, textField_1);
 		contentPane.add(rdbtnNie);
@@ -192,12 +204,18 @@ public class WindowView extends JFrame {
 		contentPane.add(comboBox);
 		
 		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setFont(new Font("Arabic Typesetting", Font.PLAIN, 20));
 		sl_contentPane.putConstraint(SpringLayout.NORTH, lblNewLabel_2, 91, SpringLayout.SOUTH, list);
 		sl_contentPane.putConstraint(SpringLayout.WEST, lblNewLabel_2, 140, SpringLayout.WEST, contentPane);
 		contentPane.add(lblNewLabel_2);
+			
+		lblNewLabel_3 = new JLabel("");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblNewLabel_3, 112, SpringLayout.SOUTH, list);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblNewLabel_3, 0, SpringLayout.WEST, lblNewLabel_2);
+		lblNewLabel_3.setFont(new Font("Arabic Typesetting", Font.PLAIN, 20));
+		contentPane.add(lblNewLabel_3);
 		
 		JLabel background =  new JLabel (new ImageIcon ("source\\aaa.png"));
 		contentPane.add(background);
 	}
-		
 }
