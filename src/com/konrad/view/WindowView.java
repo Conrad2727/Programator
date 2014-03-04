@@ -16,6 +16,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import com.konrad.db.*;
 
 public class WindowView extends JFrame {
 
@@ -27,8 +28,8 @@ public class WindowView extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JComboBox list;
-	private JComboBox comboBox;
+	private JComboBox<?> list;
+	private JComboBox<?> comboBox;
 
 	String	listData[] =
 		{
@@ -54,6 +55,8 @@ public class WindowView extends JFrame {
 	String combodata1;
 	String combodata2;
 	SpringLayout sl_contentPane = new SpringLayout();
+	DerbyInsertRows insertRows = new DerbyInsertRows();
+	JdbcDerbyConnection drbConn = new JdbcDerbyConnection();
 	
 	
 	/**
@@ -97,6 +100,8 @@ public class WindowView extends JFrame {
 				textdata4 = textField_2.getText();	
 				combodata1 = (String) list.getSelectedItem();
 				combodata2 = (String) comboBox.getSelectedItem();
+				insertRows.insertToDatabase();
+//				drbConn.derbyConnected();
 				lblNewLabel_2.setText("Pracujesz w firmie " + textdata3 +", na stanowisku " + textdata2+". " + "Twój stosunek do pracy to: " + combodata1 + " i chcia³byœ zarabiaæ: " + combodata2 + ".");
 				if (rdbtnTak.isSelected())
 					lblNewLabel_3.setText("W przysz³oœci chcesz pracowaæ w bran¿y: " + textdata4 +  " i chcesz zmieniæ pracê w przysz³oœci.");
