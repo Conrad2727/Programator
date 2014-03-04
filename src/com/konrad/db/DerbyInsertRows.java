@@ -15,9 +15,9 @@ public class DerbyInsertRows {
 
 // insert 3 rows
       int count = 0;
-      int c = sta.executeUpdate("INSERT INTO MYKILLERAPP.MYTABELLE"
-        + " ( ID, MYKEY, CONTENT)"
-        + " VALUES (11, 5, 'Bellevue')");
+      int c = sta.executeUpdate("INSERT INTO APP.MAPS"
+        + " (MAP_NAME, REGION, AREA, PHOTO_FORMAT)"
+        + " VALUES ('sdfsdf', 'Bellevue', 3, 'asdasd')");
       count = count + c;
  
 //      c = sta.executeUpdate("INSERT INTO HY_Address"
