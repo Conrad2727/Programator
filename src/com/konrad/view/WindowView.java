@@ -56,6 +56,7 @@ public class WindowView extends JFrame {
 	public String combodata2;
 	public String radioData;
 	SpringLayout sl_contentPane = new SpringLayout();
+	PopUpView openLittle = new PopUpView();
 	
 	/**
 	 * Launch the application.
@@ -77,16 +78,13 @@ public class WindowView extends JFrame {
 	 * Create the frame.
 	 */
 	public WindowView() {
-
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 1000, 600);
+		setBounds(300, 100, 1000, 600);
 		contentPane = new JPanel();
-		contentPane.setSize(new Dimension(1000, 600));
-
+		contentPane.setSize(new Dimension(800, 600));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
 		contentPane.setLayout(sl_contentPane);
 			
 		JButton btnNewButton = new JButton("Zapisz");
@@ -98,7 +96,6 @@ public class WindowView extends JFrame {
 				textdata4 = textField_2.getText();	
 				combodata1 = (String) list.getSelectedItem();
 				combodata2 = (String) comboBox.getSelectedItem();
-				
 				lblNewLabel_2.setText("Pracujesz w firmie " + textdata3 +", na stanowisku " + textdata2+". " + "Twój stosunek do pracy to: " + combodata1 + " i chcia³byœ zarabiaæ: " + combodata2 + ".");
 				if (rdbtnTak.isSelected())	{
 					radioData = "Tak";
@@ -110,6 +107,8 @@ public class WindowView extends JFrame {
 				}
 				DerbyInsertRows putString = new DerbyInsertRows();
 				putString.insertToDatabase(textdata3, textdata2, textdata4, combodata1, combodata2, radioData);
+				openLittle.popUpViewMethod();
+				dispose();
 			}
 		});
 		sl_contentPane.putConstraint(SpringLayout.NORTH, btnNewButton, 499, SpringLayout.NORTH, contentPane);

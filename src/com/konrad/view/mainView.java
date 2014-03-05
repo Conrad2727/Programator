@@ -18,10 +18,13 @@ import java.awt.event.MouseEvent;
 
 
 public class MainView	{
+	private static JPanel panel;
+	private static JFrame frame;
 	private static JTextField textField;
 	private static JPasswordField passwordField;
 	private static JLabel lblNewLabel_2;
 	static WindowView enterWindowView = new WindowView();
+	private static JLabel label;
 
     public static void main(String[] args) {
         if (true) {
@@ -48,7 +51,8 @@ public class MainView	{
                 				
                 				if (passworddata.equals("admin"))	{
                 					lblNewLabel_2.setText("Login i Has³o s¹ prawid³owe.");
-                					lblNewLabel_2.setForeground(Color.GREEN);	
+                					lblNewLabel_2.setForeground(Color.GREEN);
+                					label.setText("Jesteœ zalogowany");
                 					enterWindowView.windowViewMethod();
                 				}
                 				else	{
@@ -65,11 +69,12 @@ public class MainView	{
                 				lblNewLabel_2.setForeground(Color.RED);	
                 			}
                 	}
+                	
                 });
                 button1.putClientProperty("JButton.buttonType", "segmented");
                 button1.putClientProperty("JButton.segmentPosition", "first");
-
-                JPanel panel = new JPanel();
+               
+                panel = new JPanel();
                 panel.setOpaque(true);
                 panel.setBackground(new Color(panel.getBackground().getRGB()));
                 panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -77,11 +82,10 @@ public class MainView	{
                 sl_panel.putConstraint(SpringLayout.NORTH, button1, 157, SpringLayout.NORTH, panel);
                 panel.setLayout(sl_panel);
 
-                panel.add(button1);
-
-                JFrame frame = new JFrame();
+                frame = new JFrame();
                 frame.setAutoRequestFocus(false);
                 frame.getContentPane().add(panel, BorderLayout.CENTER);
+                panel.add(button1);
                 
                 textField = new JTextField();
                 textField.setToolTipText("Wpisz tutaj sw\u00F3j login");
@@ -118,9 +122,14 @@ public class MainView	{
                 sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_2, 6, SpringLayout.NORTH, lblNewLabel_1);
                 sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_2, -24, SpringLayout.EAST, panel);
                 panel.add(lblNewLabel_2);
+                
+                label = new JLabel("");
+                sl_panel.putConstraint(SpringLayout.SOUTH, label, -10, SpringLayout.SOUTH, panel);
+                sl_panel.putConstraint(SpringLayout.EAST, label, -176, SpringLayout.EAST, panel);
+                panel.add(label);
                 frame.setSize(531, 289);
                 frame.setLocationRelativeTo(null);
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
         });
