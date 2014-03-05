@@ -56,8 +56,6 @@ public class WindowView extends JFrame {
 	String combodata2;
 	SpringLayout sl_contentPane = new SpringLayout();
 	DerbyInsertRows insertRows = new DerbyInsertRows();
-	JdbcDerbyConnection drbConn = new JdbcDerbyConnection();
-	
 	
 	/**
 	 * Launch the application.
