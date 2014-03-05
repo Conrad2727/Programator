@@ -3,7 +3,9 @@ package com.konrad.db;
 
 import java.sql.*;
 public class DerbyInsertRows {
-  public void insertToDatabase() {
+	
+  public void insertToDatabase(String textdata3, String textdata2, String textdata4, String combodata1, String combodata2, String radioData) {
+	  
     Connection con = null;
     try {
       con = DriverManager.getConnection(
@@ -14,7 +16,7 @@ public class DerbyInsertRows {
       int count = 0;
       int c = sta.executeUpdate("INSERT INTO APP.ANKIETA"
         + " (WORKPLACE_NAME, WORK_ROLE, WORK_SAT, ChANGE_WORK, WHERE_WANNA, PAYMENT)"
-        + " VALUES ('Comarch', 'Tester', 'lubie', 'Nie', 'IT', '4000')");
+        + " VALUES ('"+ textdata3 +"', '" + textdata2 +"', '"+ combodata1 +"', '" + radioData + "', '" + textdata4 +"', '" + combodata2 +"')");
       count = count + c;
  
       System.out.println("Number of rows inserted: "+count);

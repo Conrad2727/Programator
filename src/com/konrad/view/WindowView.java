@@ -49,13 +49,13 @@ public class WindowView extends JFrame {
 			"3500 - 4000"
 		};
 
-	String textdata2;
-	String textdata3;
-	String textdata4;
-	String combodata1;
-	String combodata2;
+	public String textdata2;
+	public String textdata3;
+	public String textdata4;
+	public String combodata1;
+	public String combodata2;
+	public String radioData;
 	SpringLayout sl_contentPane = new SpringLayout();
-	DerbyInsertRows insertRows = new DerbyInsertRows();
 	
 	/**
 	 * Launch the application.
@@ -98,14 +98,18 @@ public class WindowView extends JFrame {
 				textdata4 = textField_2.getText();	
 				combodata1 = (String) list.getSelectedItem();
 				combodata2 = (String) comboBox.getSelectedItem();
-				insertRows.insertToDatabase();
-//				drbConn.derbyConnected();
+				
 				lblNewLabel_2.setText("Pracujesz w firmie " + textdata3 +", na stanowisku " + textdata2+". " + "Twój stosunek do pracy to: " + combodata1 + " i chcia³byœ zarabiaæ: " + combodata2 + ".");
-				if (rdbtnTak.isSelected())
+				if (rdbtnTak.isSelected())	{
+					radioData = "Tak";
 					lblNewLabel_3.setText("W przysz³oœci chcesz pracowaæ w bran¿y: " + textdata4 +  " i chcesz zmieniæ pracê w przysz³oœci.");
-				else
+				}
+				else	{
+					radioData = "Nie";
 					lblNewLabel_3.setText("W przysz³oœci chcesz pracowaæ w bran¿y: " + textdata4 +  " i nie chcesz zmieniæ pracy w przysz³oœci.");
-					
+				}
+				DerbyInsertRows putString = new DerbyInsertRows();
+				putString.insertToDatabase(textdata3, textdata2, textdata4, combodata1, combodata2, radioData);
 			}
 		});
 		sl_contentPane.putConstraint(SpringLayout.NORTH, btnNewButton, 499, SpringLayout.NORTH, contentPane);
