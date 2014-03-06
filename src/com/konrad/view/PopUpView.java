@@ -19,7 +19,7 @@ public class PopUpView extends JFrame {
 	private JPanel contentPane;
 	SpringLayout sl_contentPane = new SpringLayout();
 	private PopUpView frame;
-	DerbySelect chooseData = new DerbySelect();
+	SumaryView addNewWindow = new SumaryView();
 	
 	/**
 	 * Launch the pop up vindow
@@ -46,7 +46,6 @@ public class PopUpView extends JFrame {
 		setBounds(500, 200, 350, 200);
 		contentPane = new JPanel();
         contentPane.setBackground(new Color(contentPane.getBackground().getRGB()));
-
 		contentPane.setSize(new Dimension(1000, 600));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,7 +61,7 @@ public class PopUpView extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				chooseData.selectMethod();
+				addNewWindow.summaryViewMethod();
 				
 			}
 		});
@@ -80,7 +79,6 @@ public class PopUpView extends JFrame {
 		sl_contentPane.putConstraint(SpringLayout.WEST, btnNie, 74, SpringLayout.EAST, btnNewButton);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnNie, 0, SpringLayout.SOUTH, btnNewButton);
 		contentPane.add(btnNie);
-			
 
 	}
 }

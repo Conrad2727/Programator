@@ -11,7 +11,7 @@ public class DerbySelect {
   private static Statement statement = null;
   private static ResultSet resultSet = null;
 
-  public static void selectMethod()  {
+  public void selectMethod(String answerid, String workplace, String workrole, String worksat, String changework, String wherewanna, String payment)  {
     try {
 
 
@@ -22,8 +22,14 @@ public class DerbySelect {
 
       resultSet = statement.executeQuery();
       while (resultSet.next()) {
-        String user = resultSet.getString("WORKPLACE_NAME");
-        System.out.println("Miejsce pracy to: " + user);
+    	answerid = resultSet.getString("ANSWER_ID");
+        workplace = resultSet.getString("WORKPLACE_NAME");
+    	workrole = resultSet.getString("WORK_ROLE");
+    	worksat = resultSet.getString("WORK_SAT");
+    	changework = resultSet.getString("ChANGE_WORK");
+    	wherewanna = resultSet.getString("WHERE_WANNA");
+    	payment = resultSet.getString("PAYMENT");
+        System.out.println(answerid + " " + workplace + " " + workrole + " " + worksat + " " + changework + " " + wherewanna + " " + payment);
       }
     } catch (Exception e) {
       
