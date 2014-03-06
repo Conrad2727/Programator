@@ -1,6 +1,5 @@
 package com.konrad.view;
 
-
 import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -20,7 +19,7 @@ public class PopUpView extends JFrame {
 	SpringLayout sl_contentPane = new SpringLayout();
 	private PopUpView frame;
 	SumaryView addNewWindow = new SumaryView();
-	
+
 	/**
 	 * Launch the pop up vindow
 	 */
@@ -45,30 +44,36 @@ public class PopUpView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 200, 350, 200);
 		contentPane = new JPanel();
-        contentPane.setBackground(new Color(contentPane.getBackground().getRGB()));
+		contentPane.setBackground(new Color(contentPane.getBackground()
+				.getRGB()));
 		contentPane.setSize(new Dimension(1000, 600));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(sl_contentPane);
-		
-		JLabel lblNewLabel = new JLabel("Czy chcesz zobaczy\u0107 pozosta\u0142e wyniki?");
-		sl_contentPane.putConstraint(SpringLayout.NORTH, lblNewLabel, 27, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.WEST, lblNewLabel, 52, SpringLayout.WEST, contentPane);
+
+		JLabel lblNewLabel = new JLabel(
+				"Czy chcesz zobaczy\u0107 pozosta\u0142e wyniki?");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblNewLabel, 27,
+				SpringLayout.NORTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblNewLabel, 52,
+				SpringLayout.WEST, contentPane);
 		lblNewLabel.setFont(new Font("Arabic Typesetting", Font.PLAIN, 20));
 		contentPane.add(lblNewLabel);
-		
+
 		JButton btnNewButton = new JButton("Tak");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				addNewWindow.summaryViewMethod();
-				
+
 			}
 		});
-		sl_contentPane.putConstraint(SpringLayout.WEST, btnNewButton, 73, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnNewButton, -39, SpringLayout.SOUTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.WEST, btnNewButton, 73,
+				SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnNewButton, -39,
+				SpringLayout.SOUTH, contentPane);
 		contentPane.add(btnNewButton);
-		
+
 		JButton btnNie = new JButton("Nie");
 		btnNie.addMouseListener(new MouseAdapter() {
 			@Override
@@ -76,8 +81,10 @@ public class PopUpView extends JFrame {
 				dispose();
 			}
 		});
-		sl_contentPane.putConstraint(SpringLayout.WEST, btnNie, 74, SpringLayout.EAST, btnNewButton);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnNie, 0, SpringLayout.SOUTH, btnNewButton);
+		sl_contentPane.putConstraint(SpringLayout.WEST, btnNie, 74,
+				SpringLayout.EAST, btnNewButton);
+		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnNie, 0,
+				SpringLayout.SOUTH, btnNewButton);
 		contentPane.add(btnNie);
 
 	}
