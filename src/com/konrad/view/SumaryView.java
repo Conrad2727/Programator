@@ -19,10 +19,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import com.konrad.rest.*;
 
 public class SumaryView extends JFrame {
 	private JPanel contentPane2;
 	SpringLayout sl_contentPane2 = new SpringLayout();
+	SimpleHttpGet getweather = new SimpleHttpGet();
 	private SumaryView frame2;
 	JLabel lblNewLabel_1;
 	JLabel label;
@@ -191,6 +193,20 @@ public class SumaryView extends JFrame {
 				SpringLayout.WEST, lblNewLabel_1);
 		contentPane2.add(label_3);
 
+		JButton btnNewButton = new JButton("Dzi\u0119ki za dane poka\u017C mi pogod\u0119 na dzisiaj.");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				getweather.getDataFromWeb();
+
+			}
+		});
+		sl_contentPane2.putConstraint(SpringLayout.NORTH, btnNewButton, 0, SpringLayout.NORTH, button);
+		sl_contentPane2.putConstraint(SpringLayout.WEST, btnNewButton, -363, SpringLayout.EAST, contentPane2);
+		sl_contentPane2.putConstraint(SpringLayout.SOUTH, btnNewButton, -103, SpringLayout.NORTH, lblNewLabel_1);
+		sl_contentPane2.putConstraint(SpringLayout.EAST, btnNewButton, 0, SpringLayout.EAST, contentPane2);
+		contentPane2.add(btnNewButton);
+		
 		JLabel background = new JLabel(new ImageIcon("source\\aaa.png"));
 		contentPane2.add(background);
 
