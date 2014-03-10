@@ -2,6 +2,7 @@ package com.konrad.view;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -14,6 +15,8 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -69,6 +72,8 @@ public class SumaryView extends JFrame {
 	private static String changework5 = "";
 	private static String wherewanna5 = "";
 	private static String payment5 = "";
+	private JButton btnNewButton;
+	private JLabel lblNewLabel_3;
 
 	/**
 	 * Launch the pop up vindow
@@ -92,11 +97,14 @@ public class SumaryView extends JFrame {
 	public SumaryView() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 100, 1000, 600);
 		contentPane2 = new JPanel();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = (screenSize.getWidth() / 2 - 500);
+		double height = (screenSize.getHeight()) / 2 - 300;
+
+		setBounds((int) width, (int) height, 1000, 600);
 		contentPane2.setBackground(new Color(contentPane2.getBackground()
 				.getRGB()));
-		contentPane2.setSize(new Dimension(1000, 600));
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane2);
 		contentPane2.setLayout(sl_contentPane2);
@@ -192,24 +200,41 @@ public class SumaryView extends JFrame {
 		sl_contentPane2.putConstraint(SpringLayout.EAST, label_3, 466,
 				SpringLayout.WEST, lblNewLabel_1);
 		contentPane2.add(label_3);
-
-		JButton btnNewButton = new JButton("Dzi\u0119ki za dane poka\u017C mi pogod\u0119 na dzisiaj.");
+		
+		final JLabel lblNewLabel_2 = new JLabel("");
+		sl_contentPane2.putConstraint(SpringLayout.NORTH, lblNewLabel_2, 46, SpringLayout.NORTH, contentPane2);
+		sl_contentPane2.putConstraint(SpringLayout.EAST, lblNewLabel_2, -144, SpringLayout.EAST, contentPane2);
+		contentPane2.add(lblNewLabel_2);
+		
+		btnNewButton = new JButton("Pogoda");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				getweather.getDataFromWeb();
-
+				try {
+					getweather.getDataFromWeb();
+					 FileReaderandEditor.reader();
+					lblNewLabel_2.setText("<html>Pogoda dla: " + FileReaderandEditor.cityxml + "<br>Wschód s³oñca: " + FileReaderandEditor.sunrise + "<br>Zachód s³oñca: " + FileReaderandEditor.sunset + 
+							"<br>Temperatura: " + FileReaderandEditor.temp + " F</html>");
+					final URL url = new URL(FileReaderandEditor.gifurl);
+					lblNewLabel_3 .setIcon(new ImageIcon(url));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
-		sl_contentPane2.putConstraint(SpringLayout.NORTH, btnNewButton, 0, SpringLayout.NORTH, button);
-		sl_contentPane2.putConstraint(SpringLayout.WEST, btnNewButton, -363, SpringLayout.EAST, contentPane2);
-		sl_contentPane2.putConstraint(SpringLayout.SOUTH, btnNewButton, -103, SpringLayout.NORTH, lblNewLabel_1);
-		sl_contentPane2.putConstraint(SpringLayout.EAST, btnNewButton, 0, SpringLayout.EAST, contentPane2);
+		sl_contentPane2.putConstraint(SpringLayout.SOUTH, btnNewButton, -6, SpringLayout.NORTH, lblNewLabel_2);
+		sl_contentPane2.putConstraint(SpringLayout.EAST, btnNewButton, 0, SpringLayout.EAST, label_2);
 		contentPane2.add(btnNewButton);
+		
+		lblNewLabel_3 = new JLabel("");
+		sl_contentPane2.putConstraint(SpringLayout.NORTH, lblNewLabel_3, 75, SpringLayout.NORTH, contentPane2);
+		sl_contentPane2.putConstraint(SpringLayout.EAST, lblNewLabel_3, -26, SpringLayout.EAST, contentPane2);
+		contentPane2.add(lblNewLabel_3);
 		
 		JLabel background = new JLabel(new ImageIcon("source\\aaa.png"));
 		contentPane2.add(background);
-
+		
 	}
 
 	public void selectMethod() {

@@ -2,6 +2,8 @@ package com.konrad.view;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -42,11 +44,17 @@ public class PopUpView extends JFrame {
 	public PopUpView() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 350, 200);
+		
 		contentPane = new JPanel();
+
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = (screenSize.getWidth() / 2 - 175);
+		double height = (screenSize.getHeight()) / 2 - 100;
+
+		setBounds((int) width, (int) height, 350, 200);
+
 		contentPane.setBackground(new Color(contentPane.getBackground()
 				.getRGB()));
-		contentPane.setSize(new Dimension(1000, 600));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(sl_contentPane);

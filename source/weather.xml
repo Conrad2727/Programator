@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+		<rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+			<channel>
+		
+<title>Yahoo! Weather - Lodz, PL</title>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Lodz__PL/*http://weather.yahoo.com/forecast/PLXX0014_f.html</link>
+<description>Yahoo! Weather for Lodz, PL</description>
+<language>en-us</language>
+<lastBuildDate>Mon, 10 Mar 2014 2:59 pm CET</lastBuildDate>
+<ttl>60</ttl>
+<yweather:location city="Lodz" region=""   country="Poland"/>
+<yweather:units temperature="F" distance="mi" pressure="in" speed="mph"/>
+<yweather:wind chill="57"   direction="140"   speed="10" />
+<yweather:atmosphere humidity="23"  visibility="6.21"  pressure="30.36"  rising="0" />
+<yweather:astronomy sunrise="6:08 am"   sunset="5:37 pm"/>
+<image>
+<title>Yahoo! Weather</title>
+<width>142</width>
+<height>18</height>
+<link>http://weather.yahoo.com</link>
+<url>http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif</url>
+</image>
+<item>
+<title>Conditions for Lodz, PL at 2:59 pm CET</title>
+<geo:lat>51.76</geo:lat>
+<geo:long>19.47</geo:long>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Lodz__PL/*http://weather.yahoo.com/forecast/PLXX0014_f.html</link>
+<pubDate>Mon, 10 Mar 2014 2:59 pm CET</pubDate>
+<yweather:condition  text="Fair"  code="34"  temp="57"  date="Mon, 10 Mar 2014 2:59 pm CET" />
+<description><![CDATA[
+<img src="http://l.yimg.com/a/i/us/we/52/34.gif"/><br />
+<b>Current Conditions:</b><br />
+Fair, 57 F<BR />
+<BR /><b>Forecast:</b><BR />
+Mon - Partly Cloudy. High: 53 Low: 29<br />
+Tue - Sunny. High: 55 Low: 29<br />
+Wed - Sunny. High: 52 Low: 31<br />
+Thu - Sunny. High: 56 Low: 35<br />
+Fri - Sunny. High: 60 Low: 38<br />
+<br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/Lodz__PL/*http://weather.yahoo.com/forecast/PLXX0014_f.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
+(provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>
+]]></description>
+<yweather:forecast day="Mon" date="10 Mar 2014" low="29" high="53" text="Partly Cloudy" code="29" />
+<yweather:forecast day="Tue" date="11 Mar 2014" low="29" high="55" text="Sunny" code="32" />
+<yweather:forecast day="Wed" date="12 Mar 2014" low="31" high="52" text="Sunny" code="32" />
+<yweather:forecast day="Thu" date="13 Mar 2014" low="35" high="56" text="Sunny" code="32" />
+<yweather:forecast day="Fri" date="14 Mar 2014" low="38" high="60" text="Sunny" code="32" />
+<guid isPermaLink="false">PLXX0014_2014_03_14_7_00_CET</guid>
+</item>
+</channel>
+</rss>
+
+<!-- fan1598.sports.bf1.yahoo.com Mon Mar 10 14:43:16 PST 2014 -->

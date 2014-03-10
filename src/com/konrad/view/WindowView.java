@@ -10,6 +10,8 @@ import javax.swing.SpringLayout;
 import javax.swing.JButton;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
@@ -67,9 +69,13 @@ public class WindowView extends JFrame {
 	public WindowView() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 100, 1000, 600);
 		contentPane = new JPanel();
-		contentPane.setSize(new Dimension(800, 600));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = (screenSize.getWidth() / 2 - 500);
+		double height = (screenSize.getHeight()) / 2 - 300;
+
+		setBounds((int) width, (int) height, 1000, 600);
+
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(sl_contentPane);
